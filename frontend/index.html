@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Software Project Blueprint Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- jsPDF library for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1>📋 Automated Software Project Blueprint Generator</h1>
+            <p class="subtitle">Generate comprehensive project blueprints in seconds</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Input Form Section -->
+        <section class="form-section" id="formSection">
+            <div class="card">
+                <h2>Project Details</h2>
+                <p class="section-description">Fill in the details below to generate your project blueprint</p>
+
+                <form id="blueprintForm">
+                    <!-- Project Title -->
+                    <div class="form-group">
+                        <label for="projectTitle">
+                            Project Title <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="projectTitle"
+                            name="projectTitle"
+                            placeholder="e.g., E-commerce Mobile App"
+                            required
+                        >
+                    </div>
+
+                    <!-- Domain -->
+                    <div class="form-group">
+                        <label for="domain">
+                            Domain <span class="required">*</span>
+                        </label>
+                        <select id="domain" name="domain" required>
+                            <option value="">Select a domain...</option>
+                            <option value="Web">Web Application</option>
+                            <option value="Mobile">Mobile Application</option>
+                            <option value="AI">Artificial Intelligence / Machine Learning</option>
+                            <option value="Desktop">Desktop Application</option>
+                            <option value="IoT">Internet of Things (IoT)</option>
+                            <option value="Blockchain">Blockchain / Web3</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Objectives -->
+                    <div class="form-group">
+                        <label for="objectives">
+                            Project Objectives <span class="required">*</span>
+                        </label>
+                        <textarea
+                            id="objectives"
+                            name="objectives"
+                            rows="4"
+                            placeholder="Describe what you want to achieve with this project..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <!-- Duration -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="duration">
+                                Duration (weeks) <span class="required">*</span>
+                            </label>
+                            <input
+                                type="number"
+                                id="duration"
+                                name="duration"
+                                min="1"
+                                max="52"
+                                placeholder="e.g., 8"
+                                required
+                            >
+                        </div>
+
+                        <!-- Budget -->
+                        <div class="form-group">
+                            <label for="budget">
+                                Budget ($) <span class="required">*</span>
+                            </label>
+                            <input
+                                type="number"
+                                id="budget"
+                                name="budget"
+                                min="1000"
+                                step="1000"
+                                placeholder="e.g., 50000"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Team Size -->
+                    <div class="form-group">
+                        <label for="teamSize">
+                            Team Size <span class="required">*</span>
+                        </label>
+                        <input
+                            type="number"
+                            id="teamSize"
+                            name="teamSize"
+                            min="1"
+                            max="50"
+                            placeholder="e.g., 5"
+                            required
+                        >
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="form-group">
+                        <label for="techStack">
+                            Tech Stack <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="techStack"
+                            name="techStack"
+                            placeholder="e.g., React, Node.js, MongoDB, AWS"
+                            required
+                        >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="generateBtn">
+                            🚀 Generate Blueprint
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            🔄 Reset Form
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Loading Indicator -->
+                <div class="loading" id="loadingIndicator" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Generating your blueprint...</p>
+                </div>
+
+                <!-- Error Message -->
+                <div class="error-message" id="errorMessage" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-header">
+                <h2>📊 Generated Blueprint</h2>
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="downloadBtn">
+                        📥 Download PDF
+                    </button>
+                    <button class="btn btn-secondary" id="newBlueprintBtn">
+                        ➕ New Blueprint
+                    </button>
+                </div>
+            </div>
+
+            <!-- Blueprint Content Container -->
+            <div id="blueprintContent" class="blueprint-content">
+                <!-- Blueprint sections will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Automated Blueprint Generator | Built with ❤️ for Project Managers</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
